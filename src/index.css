@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* --- DEFAULT DARK THEME (Cyber) --- */
+    --bg-primary-rgb: 10 10 18;
+    /* #0a0a12 */
+    --bg-secondary-rgb: 19 19 31;
+    /* #13131f */
+    --text-primary-rgb: 255 255 255;
+    /* #ffffff */
+    --text-secondary-rgb: 156 163 175;
+    /* #9ca3af */
+    --accent-primary-rgb: 0 243 255;
+    /* #00f3ff */
+
+    /* Background Pattern - Cyber Dark */
+    --bg-gradient: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #0a0a12 70%);
+    --grid-color: rgba(255, 255, 255, 0.03);
+
+    /* Card Backgrounds */
+    --card-bg: rgba(19, 19, 31, 0.8);
+    --card-border: rgba(255, 255, 255, 0.1);
+
+    /* Direct Usage Vars */
+    --bg-primary: rgb(var(--bg-primary-rgb));
+    --bg-secondary: rgb(var(--bg-secondary-rgb));
+    --text-primary: rgb(var(--text-primary-rgb));
+    --text-secondary: rgb(var(--text-secondary-rgb));
+    --accent-primary: rgb(var(--accent-primary-rgb));
+}
+
+[data-theme='light'] {
+    /* --- LIGHT THEME (High Contrast) --- */
+    --bg-primary-rgb: 255 255 255;
+    /* #ffffff */
+    --bg-secondary-rgb: 243 244 246;
+    /* #f3f4f6 */
+    --text-primary-rgb: 17 24 39;
+    /* #111827 (Almost Black) */
+    --text-secondary-rgb: 55 65 81;
+    /* #374151 (Dark Gray) */
+    --accent-primary-rgb: 2 132 199;
+    /* #0284c7 (Strong Blue) */
+
+    /* Background Pattern - Clean White */
+    --bg-gradient: linear-gradient(to bottom, #ffffff 0%, #f3f4f6 100%);
+    --grid-color: rgba(0, 0, 0, 0.1);
+
+    /* Card Backgrounds */
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* --- SEMANTIC UTILITY CLASSES (Bypassing Tailwind Config) --- */
+.text-primary {
+    color: var(--text-primary) !important;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.text-accent {
+    color: var(--accent-primary) !important;
+}
+
+.bg-primary {
+    background-color: var(--bg-primary) !important;
+}
+
+.bg-card {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--card-border) !important;
+}
+
+.border-accent {
+    border-color: var(--accent-primary) !important;
+}
+
+.hover\:text-accent:hover {
+    color: var(--accent-primary) !important;
+}
