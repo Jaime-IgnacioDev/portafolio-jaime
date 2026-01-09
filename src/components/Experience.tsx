@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Download, BookOpen, Award, Eye } from 'lucide-react';
+import { BookOpen, Award, Eye } from 'lucide-react';
 import { useState } from 'react';
 import PDFModal from './PDFModal';
 
