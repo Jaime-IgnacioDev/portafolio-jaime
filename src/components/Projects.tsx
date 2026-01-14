@@ -25,14 +25,6 @@ const projects = [
         github: "https://somtec.cl/",
         demo: "https://somtec.cl/",
         image: "/projects/somtec.png"
-    },
-    {
-        title: "Portfolio V2",
-        description: "Este portafolio. Diseño Cyberpunk/Tech con React, Tailwind y Framer Motion.",
-        tags: ["React", "Tailwind", "Framer Motion"],
-        github: "https://github.com/Jaime-IgnacioDev/portafolio-jaime",
-        demo: "https://jaime-ignaciodev.github.io/portafolio-jaime/",
-        image: "/projects/portfolio.png"
     }
 ];
 
@@ -49,8 +41,8 @@ const Projects = () => {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"> 
-                    {/* Changed grid to 2 columns for better image visibility */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> 
+                    {/* Changed grid back to 3 columns for 3 items */}
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
