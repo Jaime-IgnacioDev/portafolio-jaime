@@ -3,25 +3,36 @@ import { motion } from 'framer-motion';
 
 const projects = [
     {
-        title: "Sistema de Gestión",
-        description: "Plataforma web para administración de recursos empresariales. Incluye dashboard en tiempo real y reportes.",
-        tags: ["React", "TypeScript", "Tailwind", "Node.js"],
-        github: "https://github.com/Jaime-IgnacioDev?tab=repositories",
-        demo: "https://github.com/Jaime-IgnacioDev"
-    },
-    {
-        title: "Portfolio V1",
-        description: "Sitio web personal con diseño Cyberpunk y altas prestaciones de rendimiento.",
-        tags: ["HTML", "CSS", "JavaScript"],
-        github: "https://github.com/Jaime-IgnacioDev?tab=repositories",
-        demo: "https://jaime-ignaciodev.github.io/Portafolio-JaimeQuintul/"
+        title: "Finance Personal",
+        description: "Sistema de gestión financiera personal. Gestiona ingresos, gastos y presupuestos con un dashboard intuitivo.",
+        tags: ["React", "Finance", "Dashboard"],
+        github: "https://finance-personal.somtec.cl/login", // User provided these as the main links, using for both or just demo
+        demo: "https://finance-personal.somtec.cl/login",
+        image: "/projects/finance.png"
     },
     {
         title: "E-Commerce Tech",
-        description: "Tienda online completa con carrito de compras y pasarela de pagos integrada.",
-        tags: ["Next.js", "Stripe", "PostgreSQL"],
-        github: "https://github.com/Jaime-IgnacioDev?tab=repositories",
-        demo: "https://github.com/Jaime-IgnacioDev"
+        description: "Plataforma de comercio electrónico moderna. Gestión de productos, carrito de compras y autenticación segura.",
+        tags: ["Next.js", "E-commerce", "Stripe"],
+        github: "https://ecommerce-test-green-eight.vercel.app/es/auth/login",
+        demo: "https://ecommerce-test-green-eight.vercel.app/es/auth/login",
+        image: "/projects/ecommerce.png"
+    },
+    {
+        title: "Somtec Corporativo",
+        description: "Sitio web corporativo para servicios tecnológicos. Diseño profesional y presentación de servicios IT.",
+        tags: ["Web", "Corporate", "Technology"],
+        github: "https://somtec.cl/",
+        demo: "https://somtec.cl/",
+        image: "/projects/somtec.png"
+    },
+    {
+        title: "Portfolio V2",
+        description: "Este portafolio. Diseño Cyberpunk/Tech con React, Tailwind y Framer Motion.",
+        tags: ["React", "Tailwind", "Framer Motion"],
+        github: "https://github.com/Jaime-IgnacioDev/portafolio-jaime",
+        demo: "https://jaime-ignaciodev.github.io/portafolio-jaime/",
+        image: "/projects/portfolio.png"
     }
 ];
 
@@ -38,7 +49,8 @@ const Projects = () => {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"> 
+                    {/* Changed grid to 2 columns for better image visibility */}
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
@@ -46,31 +58,45 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-card p-8 rounded-lg border border-white/5 hover:-translate-y-2 transition-transform duration-300 group shadow-lg"
+                            className="bg-card rounded-xl border border-white/5 hover:-translate-y-2 transition-transform duration-300 group shadow-lg overflow-hidden flex flex-col h-full"
                         >
-                            <div className="flex justify-between items-start mb-8">
-                                <Folder className="text-accent" size={40} />
-                                <div className="flex gap-4">
-                                    <a href={project.github} className="text-secondary hover:text-accent"><Github size={20} /></a>
-                                    <a href={project.demo} className="text-secondary hover:text-accent"><ExternalLink size={20} /></a>
+                            {/* Project Image Preview */}
+                            <div className="h-48 overflow-hidden relative">
+                                <img 
+                                    src={project.image} 
+                                    alt={project.title} 
+                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                                />
+                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
+                                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 bg-dark-800 text-white rounded-full hover:bg-accent transition-colors">
+                                        <Github size={24} />
+                                     </a>
+                                     <a href={project.demo} target="_blank" rel="noopener noreferrer" className="p-2 bg-dark-800 text-white rounded-full hover:bg-accent transition-colors">
+                                        <ExternalLink size={24} />
+                                     </a>
                                 </div>
                             </div>
 
-                            <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-accent transition-colors">
-                                {project.title}
-                            </h3>
+                            <div className="p-6 flex flex-col flex-grow">
+                                <div className="flex justify-between items-start mb-4">
+                                    <h3 className="text-xl font-bold text-primary group-hover:text-accent transition-colors">
+                                        {project.title}
+                                    </h3>
+                                    <Folder className="text-accent opacity-50" size={24} />
+                                </div>
 
-                            <p className="text-secondary text-sm mb-8 leading-relaxed">
-                                {project.description}
-                            </p>
+                                <p className="text-secondary text-sm mb-6 leading-relaxed flex-grow">
+                                    {project.description}
+                                </p>
 
-                            <ul className="flex flex-wrap gap-3 mt-auto">
-                                {project.tags.map(tag => (
-                                    <li key={tag} className="text-xs font-mono text-accent">
-                                        {tag}
-                                    </li>
-                                ))}
-                            </ul>
+                                <ul className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5">
+                                    {project.tags.map(tag => (
+                                        <li key={tag} className="text-xs font-mono text-accent bg-accent/10 px-2 py-1 rounded">
+                                            {tag}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
