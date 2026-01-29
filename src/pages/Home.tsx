@@ -1,18 +1,17 @@
 import { useState } from 'react';
-import Layout from './components/Layout';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Background from './components/Background';
-import Typewriter from './components/Typewriter';
+import Projects from '../components/Projects';
+import Experience from '../components/Experience';
+import Background from '../components/Background';
+import Typewriter from '../components/Typewriter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Linkedin, Mail, Download, Eye, X } from 'lucide-react';
 
-function App() {
+const Home = () => {
     const [showCVPreview, setShowCVPreview] = useState(false);
     const cvPath = "/CV2026/JAIME_QUINTUL_CV2026.pdf";
 
     return (
-        <Layout>
+        <>
             <Background />
             {/* Hero Section */}
             <section className="min-h-[calc(100vh-80px)] flex items-center justify-center relative overflow-hidden">
@@ -177,9 +176,8 @@ function App() {
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
             </a>
+        </>
+    );
+};
 
-        </Layout>
-    )
-}
-
-export default App
+export default Home;
